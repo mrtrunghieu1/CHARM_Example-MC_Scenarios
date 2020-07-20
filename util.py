@@ -20,7 +20,7 @@ def write_output(name_algorithm, excel_file_path, data):
     if not os.path.exists(result_folder):
         os.makedirs(result_folder)
     
-    pd.ExcelWriter(os.path.join(result_folder, name_algorithm + '.xlsx'), index=False)
+    df.to_excel(os.path.join(result_folder, name_algorithm + '.xlsx'), index=False)
 
 def write_evaluation(name_evaluation, name_algorithm, metric_folder, data):
     result_folder = metric_folder + "/{}".format(name_algorithm)

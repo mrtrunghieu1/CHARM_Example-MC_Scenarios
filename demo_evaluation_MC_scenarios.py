@@ -62,7 +62,7 @@ for i_file in range(from_id, to_id):
             '''Evaluation metrics'''
             for flag_i in metric_evaluation_flag:
                 result_loss, name_eval = metric_evaluation(flag_i, Y_test, predict_output)
-                write_evaluation(name_eval, algo_name, metric_folder, result_loss)
-            AEE_value = AEE_metric(predict_output, Y_test)
-            write_evaluation('AEE', algo_name, metric_folder, AEE_value)
+                # write_evaluation(name_eval, algo_name, metric_folder, result_loss)
+            # AEE_value = AEE_metric(predict_output, Y_test)
+            # write_evaluation('AEE', algo_name, metric_folder, AEE_value)
             write_output(algo_name, excel_result_path, result_output)
