@@ -1,9 +1,9 @@
 data/
-jupyter_notebook/
-__pycache__/
-.vscode/
-.DS_Store
-docs/
-.idea
-.ipynb_checkpoints
-training_lecture/
+# jupyter_notebook/
+# __pycache__/
+# .vscode/
+# .DS_Store
+# docs/
+# .idea
+# .ipynb_checkpoints
+# training_lecture/
