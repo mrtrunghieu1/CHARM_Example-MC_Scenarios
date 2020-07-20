@@ -3,7 +3,7 @@ jupyter_notebook/
 __pycache__/
 .vscode/
 .DS_Store
-.idea/*
 docs/
 .idea
 .ipynb_checkpoints
+training_lecture/
