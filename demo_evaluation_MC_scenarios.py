@@ -19,7 +19,8 @@ except:
     to_id = len(excel_file)
 
 
-# Choose some multioutput regression
+
+# Choose some multioutput regression!
 algo_regression_flag = range(0, 23)  # [0, 1, 3, 6, 9, 16, 22]
 metric_evaluation_flag = range(0, 5)
 combine_flag = ["multi_output", "chain"]
