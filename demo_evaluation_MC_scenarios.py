@@ -18,6 +18,7 @@ except:
     from_id = 0
     to_id = len(excel_file)
 
+
 # Choose some multioutput regression
 algo_regression_flag = range(0, 23)  # [0, 1, 3, 6, 9, 16, 22]
 metric_evaluation_flag = range(0, 5)
