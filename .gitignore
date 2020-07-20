@@ -5,7 +5,6 @@ __pycache__/
 training_lecture/
 .DS_Store
 .idea/*
-result/*
 docs/
 .idea
 .ipynb_checkpoints
