@@ -1,0 +1,11 @@
+data/
+jupyter_notebook/
+__pycache__/
+.vscode/
+training_lecture/
+.DS_Store
+.idea/*
+result/*
+docs/
+.idea
+.ipynb_checkpoints
