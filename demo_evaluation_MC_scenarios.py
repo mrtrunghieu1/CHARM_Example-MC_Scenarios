@@ -58,7 +58,6 @@ for i_file in range(from_id, to_id):
         for flag_combine in combine_flag:
             predict_output, algo_name = learning_algorithm(X_train, Y_train, X_test, flag_algo, flag_combine)
             result_output = np.concatenate((predict_output, Y_test, abs(predict_output-Y_test)), axis=1)  # Save y_predict, truth_label
-            # pickle.dump(result_output, open("test.p","wb"))
             '''Evaluation metrics'''
             for flag_i in metric_evaluation_flag:
                 result_loss, name_eval = metric_evaluation(flag_i, Y_test, predict_output)
