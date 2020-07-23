@@ -32,14 +32,27 @@ def write_evaluation(name_evaluation, name_algorithm, metric_folder, data):
     with open(txt_file, 'w') as outfile:
         json.dump(data, outfile)
 
-def check_null_value(df,i):
-    count = 0
-    for j in range(4500):
-        if(np.isinf(df[i][j]) or np.isnan(df[i][j])):
-            count+=1
-    return count
+# def check_null_value(df,i):
+#     count = 0
+#     for j in range(4500):
+#         if(np.isinf(df[i][j]) or np.isnan(df[i][j])):
+#             count+=1
+#     return count
 
-def sum_caculation(df,i):
-    df[i][df[i] == np.inf] = 0
-    sum_col = df[i].sum()
-    return sum_col
+# def sum_caculation(df,i):
+#     df[i][df[i] == np.inf] = 0
+#     sum_col = df[i].sum()
+#     return sum_col
+
+def AEE_caculation(c,index_col):
+    total = sum([c[:,index_col][i] for i in range(len(c[:,index_col])) if c[:,index_col][i] != np.inf and not np.isnan(c[:,index_col][i])])
+    count = sum([1 for i in range(len(c[:, index_col])) if c[:,index_col][i] != np.inf and not np.isnan(c[:,index_col][i])])
+    if count != 0:
+        AEE = 1/count * total
+    else:
+        AEE = "null"
+    return AEE
+
+def make_dir(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
