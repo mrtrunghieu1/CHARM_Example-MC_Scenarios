@@ -2,6 +2,8 @@ from math import sqrt
 from numpy import inf
 import pandas as pd
 from util import AEE_caculation
+import numpy as np
+import timeit
 
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
@@ -38,13 +40,30 @@ def metric_evaluation(flag_evaluation, y_true, y_pred):
     return result_loss, name_eval
 
 def AEE_metric(y_pred, y_true):
+    start = timeit.default_timer()
     loss_abs = abs(y_pred - y_true)
     estimated_value = loss_abs/ y_true
     AEE = {}                                      #13,1
     for i in range(estimated_value.shape[1]):
         AEE_value = AEE_caculation(estimated_value, i)
         AEE.update({'AEE_{}'.format(i):AEE_value})
+    stop = timeit.default_timer()
+    run_time = stop - start
+    AEE.update({"run_time":run_time})
     return AEE
 
+def caculating_AEE_metrics(estimate, grouth_truth):
+    start = timeit.default_timer()
+    AEE_total = {}
+    for i in range(grouth_truth.shape[1]):
+        grouth_truth_values = np.array([grouth_truth[:,i][j] for j in range(grouth_truth.shape[0]) if grouth_truth[:,i][j] != 0])
+        abs_loss = np.array([abs(estimate[:,i][j] - grouth_truth[:,i][j]) for j in range(grouth_truth.shape[0]) if grouth_truth[:,i][j] != 0])
+        N = len(grouth_truth_values)
+        AEE_value = 1/N * sum(abs_loss/grouth_truth_values) if N != 0 else 'null'
+        AEE_total.update({"AEE_{}".format(i):AEE_value})
+    stop = timeit.default_timer()
+    run_time = stop - start
+    AEE_total.update({"run_time":run_time})
+    return AEE_total
 
 

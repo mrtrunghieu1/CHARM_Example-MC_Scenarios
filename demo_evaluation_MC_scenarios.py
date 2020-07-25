@@ -7,9 +7,9 @@ import pickle
 
 from sklearn.model_selection import train_test_split
 from data_helper import excel_file, excel_path, worksheets, num_sample, output, eval_path
-from training import learning_algorithm
 from util import write_output, write_evaluation, make_dir
-from metrics_evaluation import metric_evaluation, AEE_metric
+from metrics_evaluation import metric_evaluation, caculating_AEE_metrics
+from training import learning_algorithm
 
 try:
     from_id = int(sys.argv[1])
@@ -17,8 +17,6 @@ try:
 except:
     from_id = 0
     to_id = len(excel_file)
-
-
 
 # Choose some multioutput regression!
 algo_regression_flag = range(0, 23)  # [0, 1, 3, 6, 9, 16, 22]
@@ -50,6 +48,7 @@ for i_file in range(from_id, to_id):
 
     excel_result_path = output + '{}\\'.format(excel_file[i_file])
     make_dir(excel_result_path)
+    # metric_folder = eval_path + '{}\\'.format(excel_file[i_file])
     metric_folder = eval_path + '{}\\'.format(excel_file[i_file])
     make_dir(metric_folder)
 
@@ -62,6 +61,6 @@ for i_file in range(from_id, to_id):
             for flag_i in metric_evaluation_flag:
                 result_loss, name_eval = metric_evaluation(flag_i, Y_test, predict_output)
                 write_evaluation(name_eval, algo_name, metric_folder, result_loss)
-            AEE_value = AEE_metric(predict_output, Y_test)
+            AEE_value = caculating_AEE_metrics(predict_output, Y_test)
             write_evaluation('AEE', algo_name, metric_folder, AEE_value)
             write_output(algo_name, excel_result_path, result_output)
