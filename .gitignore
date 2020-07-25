@@ -1,5 +1,5 @@
 data/
-jupyter_notebook/
+# jupyter_notebook/
 __pycache__/
 .vscode/
 .DS_Store
